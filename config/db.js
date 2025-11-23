@@ -1,21 +1,17 @@
-// const mongoose = require("mongoose");
-
-// mongoose
-//   .connect("mongodb://127.0.0.1/wallet", {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("Connected To MongoDB"))
-//   .catch((error) => console.log("error", error));
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-mongoose
-  .connect(
-    "mongodb://root:aqeiW4BhVe0REzf4CYcpdytG@wallet-api:27017/my-app?authSource=admin",
-    {
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    }
-  )
-  .then(() => console.log("Connected To MongoDB"))
-  .catch((error) => console.log("error", error));
+    });
+    console.log("Connected to MongoDB successfully");
+  } catch (error) {
+    console.error("MongoDB connection error:", error.message);
+    process.exit(1); 
+  }
+};
+
+module.exports = connectDB;

@@ -65,48 +65,7 @@ exports.signIn = async (req, res, next) => {
   res.status(201).json({ data: { token, user }, status: 200 });
 };
 
-exports.authentication = async (req, res, next) => {
-  let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
-    token = req.headers.authorization.split(" ")[1];
-  }
-  if (!token) {
-    return res.status(401).json({
-      data: "You are not logged in! Please log in to get access.",
-      status: 402,
-    });
-  }
 
-  let decode;
-  try {
-    decode = jwt.verify(token, process.env.JWT_SECERT, {});
-  } catch (error) {
-    console.log(error);
-  }
-
-  if (!decode || !decode.email) {
-    return res.status(401).json({
-      data: "token is not valid",
-      status: 401,
-    });
-  }
-
-  const user = await User.findOne({ email: decode.email });
-
-  if (!user) {
-    return res.status(401).json({
-      data: "token is not valid",
-      status: 401,
-    });
-  }
-
-  req.user = user;
-
-  next();
-};
 
 exports.changePassword = async (req, res, next) => {
   const user = req.user;

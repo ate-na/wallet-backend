@@ -1,24 +1,28 @@
-const exporess = require("express");
+const express = require("express");      
 const morgan = require("morgan");
-const bodyparser = require("body-parser");
-
-const app = exporess();
-
-app.use(morgan("dev"));
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
-app.use(exporess.json());
-
-const categoryRouter = require("./src/routes/categoryRouter");
-const transactionRouter = require("./src/routes/transactionRouter");
-const userRouter = require("./src/routes/authRouter");
-
-require("./config/db");
+const bodyParser = require("body-parser"); 
 
 require("dotenv").config();
+const connectDB = require("./config/db");
 
-app.use("/api/category", categoryRouter);
-app.use("/api/transaction", transactionRouter);
-app.use("/api/auth", userRouter);
+const app = express();
 
-app.listen(3000, () => console.log("server is Running"));
+
+app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.json());
+
+
+app.use("/api/category", require("./src/routes/categoryRouter"));
+app.use("/api/transaction", require("./src/routes/transactionRouter"));
+app.use("/api/auth", require("./src/routes/authRouter"));
+
+
+const PORT = process.env.PORT || 3000;
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+});
