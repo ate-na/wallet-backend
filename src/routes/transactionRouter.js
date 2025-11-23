@@ -7,7 +7,7 @@ const {
   getChartExpenseData,
   TotalReport,
 } = require("../controllers/transactionController");
-const { authentication } = require("../controllers/userController");
+const { authentication } = require("../middlewares/auth");
 
 const router = require("express").Router();
 

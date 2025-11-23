@@ -2,9 +2,10 @@ const {
   signIn,
   signUp,
   changePassword,
-  authentication,
 } = require("../controllers/userController");
 const router = require("express").Router();
+const { authentication } = require("../middlewares/auth");
+
 
 router.post("/signup", signUp);
 router.post("/signin", signIn);
