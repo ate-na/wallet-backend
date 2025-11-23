@@ -20,14 +20,11 @@ This backend handles user authentication, transaction management, categories, ba
 - Automatic balance calculation
 - Monthly reports & statistics endpoint
 - Filtering & pagination (by date, category, type)
-- Input validation with **Joi** or **express-validator**
 - Error handling & custom middleware
-- Swagger/OpenAPI documentation (optional – ready to add)
 
 ## 🚀 Live Demo (if you deploy it)
 
 https://your-wallet-api.up.railway.app  
-(Replace with your actual deployed URL – Vercel, Railway, Render, etc.)
 
 ## 📂 Project Structure
 ├── src/
