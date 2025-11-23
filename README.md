@@ -26,20 +26,6 @@ This backend handles user authentication, transaction management, categories, ba
 
 https://your-wallet-api.up.railway.app  
 
-## 📂 Project Structure
-├── src/
-│   ├── config/          # DB & env config
-│   ├── controllers/     # Route handlers
-│   ├── middlewares/     # auth, error, validation
-│   ├── models/          # Mongoose schemas (User, Transaction, Category)
-│   ├── routes/          # Express routes
-│   ├── utils/           # Helpers & constants
-│   └── app.js           # Express app
-├── .env.example
-├── package.json
-└── README.md
-
-
 
 ## 🛠 Tech Stack
 
@@ -80,10 +66,4 @@ npm run dev
 # Production
 npm start
 
-##  🤝 Contributing
-Pull requests are welcome! For major changes, please open an issue first.
-##  📄 License
-This project is licensed under the MIT License – see the LICENSE file for details.
-
-Made with ❤️ by ate-na
 
