@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    "mongodb://root:OkJrlRcStguBzfBBTfVgIANC@aberama.iran.liara.ir:33053/my-app?authSource=admin",
+    "mongodb://root:aqeiW4BhVe0REzf4CYcpdytG@wallet-api:27017/my-app?authSource=admin",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
